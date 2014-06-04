@@ -1,4 +1,4 @@
 datastr-algorithms
 ==================
 
-My personal practice of data structures and algorithms
+My personal repository of data structures and algorithms practicing.
