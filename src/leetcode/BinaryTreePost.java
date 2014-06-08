@@ -44,13 +44,3 @@ public class BinaryTreePost {
 		System.out.println(post.toString());
 	}
 }
-
-class TreeNode {
-	int val;
-	TreeNode left;
-	TreeNode right;
-
-	TreeNode(int x) {
-		val = x;
-	}
-}
