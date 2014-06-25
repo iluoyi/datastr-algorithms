@@ -1,4 +1,4 @@
-package creerCup.cpt1;
+package creerCup;
 
 public class P0205 {
 
