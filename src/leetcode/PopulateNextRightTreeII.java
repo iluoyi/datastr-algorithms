@@ -3,7 +3,7 @@ package leetcode;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class PopulateNextRightTree {
+public class PopulateNextRightTreeII {
 	public void connect(TreeLinkNode root) {
         if (root != null) {    
 			Queue<TreeLinkNode> queue = new LinkedList<TreeLinkNode>();
