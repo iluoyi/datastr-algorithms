@@ -1,10 +1,10 @@
-package dataStrct;
+package practice;
 
-public class LinkedList {
+public class ReverseLinkedList {
 	ListNode head;
 	ListNode tail;
 	
-	public LinkedList() {
+	public ReverseLinkedList() {
 		head = new ListNode();// a dummy node in the head
 		tail = head;
 	}
@@ -44,8 +44,8 @@ public class LinkedList {
 	 * For my own testing.
 	 */
 	public static void main(String args[]) {
-		int[] testInput = {5, 4, 9, 5, 7, 2, 2};
-		LinkedList list = new LinkedList();
+		int[] testInput = {5};//{5, 4, 9, 5, 7, 2, 2};
+		ReverseLinkedList list = new ReverseLinkedList();
 		
 		for (int i = 0; i < testInput.length; i ++) {
 			list.insert(testInput[i]);

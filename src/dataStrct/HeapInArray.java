@@ -3,6 +3,9 @@ package dataStrct;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/*
+ * Yi: Heap siftdown might contain bugs, should be checked later.
+ */
 public class HeapInArray {
 	
 	ArrayList<Integer> minHeap;
@@ -14,7 +17,7 @@ public class HeapInArray {
 	
 	public HeapInArray(Integer[] initArray) {
 		minHeap = new ArrayList<Integer>(Arrays.asList(initArray));
-		initDown();
+		//initDown();
 	}
 	
 	// O(nlogn)

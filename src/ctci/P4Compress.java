@@ -1,4 +1,4 @@
-package creerCup;
+package ctci;
 
 public class P4Compress {
 	
