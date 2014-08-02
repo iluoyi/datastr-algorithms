@@ -8,22 +8,20 @@ public class BinaryTreePre {
         if (root == null) {
             return null;
         } else {
-            //HashSet<TreeNode> expanded = new HashSet<TreeNode>();
-            ArrayList<Integer> pre = new ArrayList<Integer>();
+        	ArrayList<Integer> result = new ArrayList<Integer>();
             Stack<TreeNode> stack = new Stack<TreeNode>();
-            stack.push(root);
+            TreeNode crt = root;
             
-            while (!stack.isEmpty()) {
-                TreeNode crtNode = stack.pop();
-                if (crtNode.right != null) {
-                    stack.push(crtNode.right);
-                }
-                if (crtNode.left != null) {
-                    stack.push(crtNode.left);
-                } 
-                pre.add(crtNode.val);
+            while (crt != null || !stack.isEmpty()) {
+            	result.add(crt.val);
+            	stack.push(crt);
+            	crt = crt.left;
+            	while (crt == null && !stack.isEmpty()) {
+            		crt = stack.pop();
+            		crt = crt.right;
+            	}
             }
-            return pre;
+            return result;
         }
 	}
 	

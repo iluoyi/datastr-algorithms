@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-
 //  some ideas from: http://blog.csdn.net/ns_code/article/details/12977901
 public class BinaryTreeIn {
 	public List<Integer> inorderTraversal(TreeNode root) {
@@ -12,7 +11,7 @@ public class BinaryTreeIn {
         	return new ArrayList<Integer>();
         }
         
-        ArrayList<Integer> in = new ArrayList<Integer>();
+        ArrayList<Integer> result = new ArrayList<Integer>();
         Stack<TreeNode> stack = new Stack<TreeNode>(); // empty stack
         
         TreeNode crtNode = root;
@@ -22,16 +21,16 @@ public class BinaryTreeIn {
         		stack.push(crtNode);
         		crtNode = crtNode.left;
         	} else {
-        		in.add(crtNode.val);
+        		result.add(crtNode.val);
         		crtNode = crtNode.right;
         		while (crtNode == null && !stack.isEmpty()) {
         			crtNode = stack.pop(); // retrieve the mother node
-        			in.add(crtNode.val);
+        			result.add(crtNode.val);
         			crtNode = crtNode.right;
         		}
         	}
         }
-        return in;
+        return result;
     }
 	
 	public static void main (String args[]) {
