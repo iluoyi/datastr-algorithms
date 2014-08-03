@@ -1,6 +1,6 @@
 package leetcode;
 
-public class ConvertedSortedArrayToBST {
+public class ConvertSortedArrayToBST {
 	public TreeNode sortedArrayToBST(int[] num) {
 		return sortedArrayToBST(num, 0, num.length - 1);
 	}
