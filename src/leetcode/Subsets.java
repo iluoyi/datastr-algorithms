@@ -12,31 +12,31 @@ import java.util.List;
  *
  */
 public class Subsets {
-	public List<List<Integer>> subsets(int[] s) {
-		ArrayList<List<Integer>> result = new ArrayList<List<Integer>>();
-		if (s != null && s.length != 0) {
-			Arrays.sort(s);
-			ArrayList<Integer> path = new ArrayList<Integer>();
-			subsetsHelper(s, 0, path, result);
-		}
-		
-		return result;
-	}
-	
-	private void subsetsHelper(int[] S, int step, ArrayList<Integer> path, ArrayList<List<Integer>> result) {
-		if (step == S.length) {
-			// should be deep copy here!
-			result.add(new ArrayList<Integer>(path));
-		} else {
-			// don't add the current one
-			subsetsHelper(S, step + 1, path, result);
-			
-			// add the current one
-			path.add(S[step]);
-			subsetsHelper(S, step + 1, path, result);
-			path.remove(path.size() - 1);
-		}
-	}
+	 public List<List<Integer>> subsets(int[] num) {
+	        ArrayList<List<Integer>> result = new ArrayList<List<Integer>>();
+	        if(num == null || num.length == 0) {
+	            return result;
+	        }
+	        ArrayList<Integer> list = new ArrayList<Integer>();
+	        Arrays.sort(num);  
+	        subsetsHelper(result, list, num, 0);
+
+	        return result;
+	    }
+
+
+	    private void subsetsHelper(ArrayList<List<Integer>> result,
+	        ArrayList<Integer> list, int[] num, int pos) {
+
+	        result.add(new ArrayList<Integer>(list));
+
+	        for (int i = pos; i < num.length; i++) {
+
+	            list.add(num[i]);
+	            subsetsHelper(result, list, num, i + 1);
+	            list.remove(list.size() - 1);
+	        }
+	    }
 	
 	public static void main(String args[]) {
 		Subsets solution = new Subsets();
