@@ -1,7 +1,5 @@
 package leetcode;
 
-import java.util.ArrayList;
-import java.util.Stack;
 
 public class FlattenBinaryTreeToLinkedList {
 	// By nine_chapter

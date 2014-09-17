@@ -1,7 +1,6 @@
 package leetcode;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Stack;
 
 public class BinaryTreePost {
