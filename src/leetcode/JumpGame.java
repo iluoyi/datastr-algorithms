@@ -1,5 +1,13 @@
 package leetcode;
 
+/**
+ * Maintain a maximum reachable range
+ * 
+ * O(n)
+ * 
+ * @author yiluo
+ *
+ */
 public class JumpGame {
     public boolean canJump(int[] A) {
     	if (A != null && A.length != 0) {
