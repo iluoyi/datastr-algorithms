@@ -8,7 +8,7 @@ import java.util.Arrays;
  * @author yiluo
  *
  */
-public class N3SumClosest {
+public class ThreeSumClosest {
     public int threeSumClosest(int[] num, int target) {
         if (num == null || num.length == 0) return Integer.MAX_VALUE;
         
