@@ -16,6 +16,7 @@ public class MaximumSubarray {
         	tempSum += A[tail];
         	if (tempSum > maxSum) {
         		maxSum = tempSum;
+        		//maxHead = 
         	}
         	if (tempSum <= 0) {
         		head = tail + 1;
@@ -31,7 +32,7 @@ public class MaximumSubarray {
 	
 	public static void main(String args[]) {
 		MaximumSubarray solution = new MaximumSubarray();
-		int[] A = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+		int[] A = new int[]{-2, -1};
 		System.out.println(solution.maxSubArray(A));
 	}
 }
