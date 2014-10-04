@@ -92,4 +92,25 @@ public class SudokuSolver {
         visited[num-1] = true;
         return true;
     }
+	
+	public static void main(String args[]) {
+		SudokuSolver solution = new SudokuSolver();
+		char[][] board = {{'.','7','1','.','.','.','5','6','.'}, 
+						  {'.','8','9','.','.','7','1','.','3'},
+						  {'.','.','.','.','.','1','.','.','.'},
+						  {'.','.','.','7','.','.','.','.','.'},
+						  {'.','.','.','.','.','6','9','.','.'},
+						  {'.','.','7','4','1','.','8','.','.'},
+						  {'9','4','.','3','.','.','.','.','1'},
+						  {'.','1','6','.','.','8','.','7','.'},
+						  {'.','.','3','.','.','.','.','.','.'}};
+		solution.solveSudoku(board);
+		
+		for (int i = 0; i < 9; i ++) {
+			for (int j = 0; j < 9; j ++) {
+				System.out.print(board[i][j] + " ");
+			}
+			System.out.println();
+		}
+	}
 }
