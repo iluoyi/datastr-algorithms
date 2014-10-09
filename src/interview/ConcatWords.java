@@ -5,6 +5,12 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * By Facebook
+ * 
+ * @author yiluo
+ *
+ */
 public class ConcatWords {
     public static void main(String args[]) throws Exception {
     	HashMap<Integer, String> index2Word = new HashMap<Integer, String>();
