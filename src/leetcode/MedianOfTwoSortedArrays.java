@@ -74,7 +74,7 @@ public class MedianOfTwoSortedArrays {
 		  if (Ai < Bj)
 		    // exclude Ai and below portion
 		    // exclude Bj and above portion
-		    return findKthSmallest(A, aStart+i+1, m-i-1, B, bStart, j, k-i-1);
+		    return findKthSmallest(A, aStart+i+1, m-i-1, B, bStart, j, k-i-1); // j = k-(i+1), so for B, j+1..end are useless
 		  else /* Bj < Ai */
 		    // exclude Ai and above portion
 		    // exclude Bj and below portion
