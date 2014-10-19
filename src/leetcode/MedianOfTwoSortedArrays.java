@@ -28,6 +28,10 @@ public class MedianOfTwoSortedArrays {
 	
 	/**
 	 * O(log(m+n)) - halve the search space
+	 * The target is k, so the formula is 
+	 * T(k) = T(k/2) + O(1)
+	 * Then, the result is O(log(k)) - halve the search space
+	 * 
 	 * 
 	 * If the complexity is right, it's the best solution.
 	 */
