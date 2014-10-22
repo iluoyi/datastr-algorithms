@@ -28,7 +28,7 @@ public class FindMinInRotatedSortedArray {
 	
 	public static void main(String args[]) {
 		FindMinInRotatedSortedArray solution = new FindMinInRotatedSortedArray();
-		int[] num = {1};
+		int[] num = {2, 3, 1};
 		System.out.println(solution.findMin(num));
 	}
 }
