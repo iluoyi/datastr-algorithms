@@ -6,7 +6,7 @@ public class CopyListWithRandomPointer {
        
         RandomListNode crt, temp, newHead;
         
-        // 1. copy the next filed of the list
+        // 1. copy the next field of the list
         crt = head;
         while (crt != null) {
         	temp = new RandomListNode(crt.label);
