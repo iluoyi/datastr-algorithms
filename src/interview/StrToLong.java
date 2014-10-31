@@ -8,74 +8,67 @@ package interview;
 public class StrToLong {
 	/**
 	 * 
-	 * This method converts a string into a long. It is able to check the sign of the result.
 	 * For a given string which contains characters other than digits, this method just extracts
-	 * the first successive sequence of digits and convert this subset string into a long.
-	 * However, if there is NO digit, this method simply returns 0 (which is not good enough).
+	 * the first successive sequence of digits (with the sign) and convert this subset into a long.
 	 * 
 	 * Noticed limitations:
-	 * 1. If the input String is "abc" which contains no digits at all, there should be some ways 
-	 *    to handle it. For example, the method can throw a customized BadCharacterException which
-	 *    contains the information of bad characters and its first index. For now, I just return 0
-	 *    when detecting no digit in the string. This is not good because sometimes users may really
-	 *    attempt to convert the string "0" to a long. Then the result 0 may cause misunderstandings.  
+	 * 1. No exceptions thrown when encountering errors. To fix it, we can adapt the API to throw 
+	 *    exceptions rather than simply print out error messages onto the console. 
 	 *    
-	 * 2. If the corresponding long of the given String actually exceeds the range of long type, it
+	 * 2. If errors are detected, the method still returns -1. This can be a limitation if the input
+	 *    String is indeed "-1". To fix it, we can associate the result with an Exception.
+	 *    
+	 * 3. If the corresponding long of the given String actually EXCEEDS the range of a long type, it
 	 * 	  causes problems. Similarly, we can throw a predefined exception for this scenario.
 	 * 
-	 * 3. The last limitation I can come up with is that there is no parameters to indicate the radix
+	 * 4. The last limitation I can come up with is that there is no parameters to indicate the radix
 	 *    of the given String, which means the input string can only be a decimal number. We may change 
 	 *    the API and add one more int argument to handle different radices.
 	 *    
 	 */
-	long stringToLong(String s)	{
+	public long stringToLong(String s)	{
 		/* code goes here to convert a string to a long */
 		long result = 0;
 		
-		if (s != null && s.length() > 0) {// to check if the given string is legal/nonempty
+		if (s != null) { // to check if the given string is null
+			s = s.trim();
+		} else {
+			reportError(0);
+			return -1;
+		}
+		
+		if (s.length() > 0) {// to check if the given string is empty
 			int length = s.length();
 			boolean isNegative = false;
-			int start = 0; // indicates the start of the long int
+			int start = 0; // indicates the start of the long
 			
-			// 1. try to locate the first digit which should be the start of this long int
+			// 1. try to locate the first digit which should be the start of this long
 			while ((start < length) && (s.charAt(start) < '0' || s.charAt(start) > '9')) {
 				start ++;
 			}
 			
 			// 2. if start exceeds the length, it means there is no legal digit
 			if (start >= length) {
-				return 0;
+				reportError(1);
+				return -1;
 			}
 			
-			// 3. we need to check if it is a negative long int
-			if (start > 0) { 
-				if (s.charAt(start - 1) == '-') {
-					isNegative = true;
-				}
-			}
+			// 3. we need to check if it is a negative long
+			if (start > 0 && s.charAt(start - 1) == '-') isNegative = true;
 			
-			// 4. try to locate the last digit which should be the end of this long int
-			int end = start;
+			// 4. try to locate the end of the long while building the result
+			result = s.charAt(start) - '0';
+			int end = start + 1; // indicates the end
 			while (end < length && s.charAt(end) >= '0' && s.charAt(end) <= '9') {
+				result = result * 10 + s.charAt(end) - '0';
 				end ++;
 			}
+			return isNegative ? result * -1 : result;	
 			
-			// 5. to get the real long int result
-			long temp = 0;
-			while (start < end) {
-				temp = s.charAt(start) - '0';
-				for (int i = 1; i < end - start; i ++) {
-					temp *= 10;
-				}
-				result += temp;
-				start ++;
-			}
-			if (isNegative) {
-				result *= -1;
-			}
+		} else {
+			reportError(0);
+			return -1;
 		}
-		
-		return result;
 	}
 	
 	/**
@@ -91,7 +84,7 @@ public class StrToLong {
 	 * ...
 	 * 
 	 */
-	void test() {
+	public void test() {
 		long i = stringToLong("123");
 		if (i == 123) {
 			// success
@@ -106,13 +99,24 @@ public class StrToLong {
 	}
 	
 	/**
-	 * This is the main function where I add a few lines for my own testing.
+	 * The helper method to print error messages.
+	 */
+	private void reportError(int errorNum) {
+		switch (errorNum) {
+			case 0: System.out.println("ERROR 0: Input String is a null or empty String."); break;
+			case 1: System.out.println("ERROR 1: No digit detected in the input String."); break;
+			default: System.out.println("ERROR: Errors detected.");
+		}
+	}
+	
+	/**
+	 * This is the main function where I add a few lines for my own test.
 	 */
 	public static void main(String args[]) {
 		StrToLong question1 = new StrToLong();
-		question1.test();
+		//question1.test();
 		
-		String testStr = "-00098951215L";
+		String testStr = "abc -9223372036854775808sf";
 		System.out.println(question1.stringToLong(testStr));
 	}
 }

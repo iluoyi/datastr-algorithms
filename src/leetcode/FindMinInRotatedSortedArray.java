@@ -26,6 +26,56 @@ public class FindMinInRotatedSortedArray {
 		return -1;
 	}
 	
+	/**
+	 * 
+	 * O(logn) / O(1)
+	 * 
+	 * @param num
+	 * @return
+	 */
+	public int findMinAC(int[] num) {
+		if (num != null && num.length > 0) {
+			int left = 0, right = num.length - 1;
+			int mid = 0;
+			while (left < right) {
+				mid = left + (right - left) / 2;
+				if (num[left] <= num[mid]) { // "left == mid" may appear during iterations
+					if (num[mid] < num[right]) {
+						return num[left];
+					} else {
+						left = mid + 1;
+					}
+				} else {
+					right = mid; // no -1
+				}
+			}
+			return num[left];
+		}
+		return -1;
+	}
+	
+	public int findMinACClean(int[] num) {
+		if (num != null && num.length > 0) {
+			int left = 0, right = num.length - 1;
+			int mid = 0;
+		   
+			while (left < right && num[left] >= num[right]) {
+				mid = left + (right - left) / 2;
+				if (num[mid] > num[right]) { // i.e. num[mid] >= num[left] > num[right]
+					left = mid + 1;
+				} else if (num[mid] < num[left]) { // i.e. num[mid] < num[left] >= num[right]
+					right = mid;
+				} 
+//				else { // i.e. num[mid] == num[left] == num[right]
+//					left ++;
+//					right --;
+//				}
+			}
+			return num[left];
+		}
+		return -1;
+	}
+	
 	public static void main(String args[]) {
 		FindMinInRotatedSortedArray solution = new FindMinInRotatedSortedArray();
 		int[] num = {2, 3, 1};

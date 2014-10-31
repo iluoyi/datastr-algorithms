@@ -34,26 +34,54 @@ public class FindMinInRotatedSortedArrayII {
 	}
 	
 	/**
-	 * Solution:
-	 * For case where AL == AM == AR, the minimum could be on AM’s left or right side 
-	 * (eg, [1, 1, 1, 0, 1] or [1, 0, 1, 1, 1]). In this case, we could not discard either 
-	 * subarrays and therefore such worst case degenerates to the order of O(n).
-	 *
+	 * O(n) / O(1)
+	 * 
 	 */
-	public int findMinAC(int[] A) {
-		   int L = 0, R = A.length - 1;
-		   while (L < R && A[L] >= A[R]) {
-		      int M = (L + R) / 2;
-		      if (A[M] > A[R]) {
-		         L = M + 1;
-		      } else if (A[M] < A[L]) {
-		         R = M;
-		      } else {   // A[L] == A[M] == A[R]
-		         L = L + 1;
-		      }
-		   }
-		   return A[L];
+	public int findMinAC(int[] num) {
+		if (num != null && num.length > 0) {
+			int left = 0, right = num.length - 1;
+			int mid = 0;
+		   
+			while (left < right) {
+				if (num[left] < num[right]) {
+					return num[left];
+				}
+				// else: num[left] >= num[right]
+				mid = left + (right - left) / 2;
+				if (num[mid] > num[right]) { // i.e. num[mid] >= num[left] > num[right]
+					left = mid + 1;
+				} else if (num[mid] < num[left]) { // i.e. num[mid] < num[left] >= num[right]
+					right = mid;
+				} else { // i.e. num[mid] == num[left] == num[right]
+					left ++;
+					right --;
+				}
+			}
+			return num[left];
 		}
+		return -1;
+	}
+	
+	public int findMinACClean(int[] num) {
+		if (num != null && num.length > 0) {
+			int left = 0, right = num.length - 1;
+			int mid = 0;
+		   
+			while (left < right && num[left] >= num[right]) {
+				mid = left + (right - left) / 2;
+				if (num[mid] > num[right]) { // i.e. num[mid] >= num[left] > num[right]
+					left = mid + 1;
+				} else if (num[mid] < num[left]) { // i.e. num[mid] < num[left] >= num[right]
+					right = mid;
+				} else { // i.e. num[mid] == num[left] == num[right]
+					left ++;
+					right --;
+				}
+			}
+			return num[left];
+		}
+		return -1;
+	}
 	
 	public static void main(String args[]) {
 		FindMinInRotatedSortedArrayII solution = new FindMinInRotatedSortedArrayII();

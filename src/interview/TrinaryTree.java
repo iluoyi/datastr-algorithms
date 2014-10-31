@@ -6,7 +6,7 @@ package interview;
  * 
  */
 public class TrinaryTree {
-	Node root; // this defines the root of this trinary tree
+	private Node root; // this defines the root of this trinary tree
 
 	/**
 	 * The default constructor
@@ -54,7 +54,7 @@ public class TrinaryTree {
 	
 	/**
 	 * This is the delete method. 
-	 * It lookups the given value and delete the corresponding node, then it adjusts the tree to 
+	 * It looks up the given value and deletes the corresponding node, then it adjusts the tree to 
 	 * satisfy the requirement of the tri-nary tree. 
 	 * If it cannot find the value in the tree, this method returns false.
 	 */
@@ -125,7 +125,7 @@ public class TrinaryTree {
 	}
 	
 	/**
-	 * For my own testing.
+	 * For my own test.
 	 */
 	public static void main(String args[]) {
 		int[] testInput = {5, 4, 9, 5, 7, 2, 2};
