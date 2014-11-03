@@ -59,7 +59,7 @@ public class FindMinInRotatedSortedArray {
 			int left = 0, right = num.length - 1;
 			int mid = 0;
 		   
-			while (left < right && num[left] >= num[right]) {
+			while (left < right && num[left] > num[right]) {
 				mid = left + (right - left) / 2;
 				if (num[mid] > num[right]) { // i.e. num[mid] >= num[left] > num[right]
 					left = mid + 1;
@@ -78,7 +78,7 @@ public class FindMinInRotatedSortedArray {
 	
 	public static void main(String args[]) {
 		FindMinInRotatedSortedArray solution = new FindMinInRotatedSortedArray();
-		int[] num = {2, 3, 1};
-		System.out.println(solution.findMin(num));
+		int[] num = {2, 1};
+		System.out.println(solution.findMinACClean(num));
 	}
 }

@@ -19,6 +19,7 @@ public class FirstMissingPositive {
 			while (A[i] != i + 1) {
 				if (A[i] <= 0 || A[i] > n || A[i] == (A[A[i] - 1]))
 					break;
+				// the swap process is a bucket-sort
 				int temp = A[A[i] - 1];
 				A[A[i] - 1] = A[i];
 				A[i] = temp; // A[i] should be changed later
