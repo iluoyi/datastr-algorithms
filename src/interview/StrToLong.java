@@ -17,11 +17,8 @@ public class StrToLong {
 	 *    
 	 * 2. If errors are detected, the method still returns -1. This can be a limitation if the input
 	 *    String is indeed "-1". To fix it, we can associate the result with an Exception.
-	 *    
-	 * 3. If the corresponding long of the given String actually EXCEEDS the range of a long type, it
-	 * 	  causes problems. Similarly, we can throw a predefined exception for this scenario.
 	 * 
-	 * 4. The last limitation I can come up with is that there is no parameters to indicate the radix
+	 * 3. The last limitation I can come up with is that there is no parameters to indicate the radix
 	 *    of the given String, which means the input string can only be a decimal number. We may change 
 	 *    the API and add one more int argument to handle different radices.
 	 *    
@@ -29,6 +26,7 @@ public class StrToLong {
 	public long stringToLong(String s)	{
 		/* code goes here to convert a string to a long */
 		long result = 0;
+		long limit = -Long.MAX_VALUE;
 		
 		if (s != null) { // to check if the given string is null
 			s = s.trim();
@@ -54,16 +52,29 @@ public class StrToLong {
 			}
 			
 			// 3. we need to check if it is a negative long
-			if (start > 0 && s.charAt(start - 1) == '-') isNegative = true;
+			if (start > 0 && s.charAt(start - 1) == '-') {
+				isNegative = true;
+				limit = Long.MIN_VALUE; // 2^63
+			}
 			
 			// 4. try to locate the end of the long while building the result
-			result = s.charAt(start) - '0';
+			long lowerLimit = limit / 10;
+			result = -(s.charAt(start) - '0');
 			int end = start + 1; // indicates the end
 			while (end < length && s.charAt(end) >= '0' && s.charAt(end) <= '9') {
-				result = result * 10 + s.charAt(end) - '0';
+				if (result < lowerLimit) {
+					reportError(2);
+					return -1;
+				}
+				result *= 10;
+				if (result < limit + (s.charAt(end) - '0')) {
+					reportError(2);
+					return -1;
+				}
+				result -= (s.charAt(end) - '0');
 				end ++;
 			}
-			return isNegative ? result * -1 : result;	
+			return isNegative ? result : -result;	
 			
 		} else {
 			reportError(0);
@@ -72,7 +83,7 @@ public class StrToLong {
 	}
 	
 	/**
-	 * This is a very simple test method which just tries one test case.
+	 * This is a very simple test method provided by the problem description, which just tries one test case.
 	 * In real practice, we may need more test cases. One possible idea is to read them
 	 * from a file in which each line contains the original string and corresponding 
 	 * correct long result.
@@ -105,6 +116,7 @@ public class StrToLong {
 		switch (errorNum) {
 			case 0: System.out.println("ERROR 0: Input String is a null or empty String."); break;
 			case 1: System.out.println("ERROR 1: No digit detected in the input String."); break;
+			case 2: System.out.println("ERROR 2: Input String exceeds the boundary."); break;
 			default: System.out.println("ERROR: Errors detected.");
 		}
 	}

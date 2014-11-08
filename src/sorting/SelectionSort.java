@@ -1,5 +1,11 @@
 package sorting;
 
+/**
+ * O(n^2)
+ * 
+ * @author Yi
+ *
+ */
 public class SelectionSort {
 	public static void selectionSort(int[] list) {
 		for (int i = 0; i < list.length - 1; i++) {
