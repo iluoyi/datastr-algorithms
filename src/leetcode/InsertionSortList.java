@@ -1,6 +1,24 @@
 package leetcode;
 
-public class InsertSortList {
+public class InsertionSortList {
+	
+	public ListNode insertionSortList(ListNode head) {
+        ListNode dummy = new ListNode(0);
+
+        while (head != null) {
+            ListNode node = dummy;
+            while (node.next != null && node.next.val < head.val) {
+                node = node.next;
+            }
+            ListNode temp = head.next;
+            head.next = node.next;
+            node.next = head;
+            head = temp;
+        }
+
+        return dummy.next;
+    }
+	
 	public ListNode sortList(ListNode head) {
 		if (head == null || head.next == null) {
 			return head;
@@ -31,10 +49,7 @@ public class InsertSortList {
 		
 		return dummy.next;
 	}
-	
-	
-	
-	
+
 	public void printList(ListNode head) {
 		ListNode crt = head;
 		while (crt != null) {
@@ -54,8 +69,7 @@ public class InsertSortList {
 			crt = crt.next;
 		}
 		
-		InsertSortList solution = new InsertSortList();
-		
+		InsertionSortList solution = new InsertionSortList();
 		//ListNode newHead = solution.partitionList(head);
 		//solution.printList(newHead);
 
