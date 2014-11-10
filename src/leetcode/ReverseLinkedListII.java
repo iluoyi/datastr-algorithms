@@ -3,7 +3,7 @@ package leetcode;
 /**
  * Should process the linked list in one run
  * 
- * 1. fine pre of m; (1 <= m <= length)
+ * 1. find pre of m; (1 <= m <= length)
  * 2. reverse nodes till n; (m <= n <= length)
  * 3. concatenate 3 parts: pre, crt, post
  * 

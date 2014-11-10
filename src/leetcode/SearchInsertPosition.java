@@ -6,7 +6,7 @@ public class SearchInsertPosition {
         int tail = A.length - 1;
         int mid = 0;
         
-        while (head <= tail) {
+        while (head <= tail) { // find the next index of "the last number which is less than target"
         	mid = (head + tail) / 2;
         	if (A[mid] < target) {
         		head = mid + 1;

@@ -11,7 +11,6 @@ public class ReverseInteger {
 	           // System.out.println(digit);
 	            result = result * 10 + digit;
 	            x = x / 10;
-	           
 	        } 
 	        return result;// * sign;
 	    }
