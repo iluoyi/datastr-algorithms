@@ -1,5 +1,11 @@
 package sorting;
 
+/**
+ * O(n^2)
+ * 
+ * @author Yi
+ *
+ */
 public class InsertionSort {
 	public static void insertionSort(int[] list) {
 		for (int i = 0; i < list.length; i++) {

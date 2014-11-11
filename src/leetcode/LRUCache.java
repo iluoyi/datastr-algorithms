@@ -2,6 +2,13 @@ package leetcode;
 
 import java.util.HashMap;
 
+/**
+ * head - old
+ * tail - new
+ * 
+ * @author Yi
+ *
+ */
 public class LRUCache {  
    	HashMap<Integer, MapNode> map;
     int capacity;
@@ -15,6 +22,32 @@ public class LRUCache {
     	tail = null;
     }
 
+    public int get(int key) {
+    	if (map.containsKey(key)) {
+    		MapNode node = map.get(key);
+    		moveNode(node);
+    		return node.getValue();
+    	}
+        return -1;
+    }
+    
+    public void set(int key, int value) {
+        if (map.containsKey(key)) {
+        	MapNode node = map.get(key);
+        	node.setValue(value);
+        	map.put(key, node);
+        	moveNode(node);
+        } else {
+        	if (map.size() >= capacity) {
+        		map.remove(head.getKey());
+        		removeLRUNode();
+        	} 
+        	MapNode newNode = new MapNode(key, value);
+        	map.put(key, newNode);
+    		addNode(newNode);
+        }
+    }
+    
     public void addNode(MapNode newNode) {
     	if (head == null) { // it's empty
     		newNode.setPrev(null);
@@ -59,33 +92,7 @@ public class LRUCache {
     		head.setPrev(null);
     	}
     }
-    
-    public int get(int key) {
-    	if (map.containsKey(key)) {
-    		MapNode node = map.get(key);
-    		moveNode(node);
-    		return node.getValue();
-    	}
-        return -1;
-    }
-    
-    public void set(int key, int value) {
-        if (map.containsKey(key)) {
-        	MapNode node = map.get(key);
-        	node.setValue(value);
-        	map.put(key, node);
-        	moveNode(node);
-        } else {
-        	if (map.size() >= capacity) {
-        		map.remove(head.getKey());
-        		removeLRUNode();
-        	} 
-        	MapNode newNode = new MapNode(key, value);
-        	map.put(key, newNode);
-    		addNode(newNode);
-        }
-    }
-    
+        
     public static void main(String args[]) {
     	LRUCache cache = new LRUCache(1);
     	cache.set(2, 1);
