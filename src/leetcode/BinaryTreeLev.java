@@ -8,33 +8,27 @@ public class BinaryTreeLev {
 	public List<List<Integer>> levelOrder(TreeNode root) {
 		List<List<Integer>> level = new ArrayList<List<Integer>>();
 		if (root != null) {
-			
+			ArrayList<Integer> tempList = new ArrayList<Integer>();
 			LinkedList<TreeNode> queue = new LinkedList<TreeNode>();
 			queue.offer(root);
-			queue.offer(null);
-			
-			ArrayList<Integer> tempList = new ArrayList<Integer>();
-			
 			
 			TreeNode crt = null;
+			int qSize = 0;
 			while (!queue.isEmpty()) {
-				crt = queue.poll();
-					
-				if (crt != null) {
+				qSize = queue.size();
+				for (int i = 0; i < qSize; i ++) {
+					crt = queue.poll();
 					tempList.add(crt.val);
+					
 					if (crt.left != null) {
 						queue.add(crt.left);
 					}
 					if (crt.right != null) {
 						queue.add(crt.right);
 					}
-				} else { // is null
-					level.add(tempList);
-					tempList = new ArrayList<Integer>();
-					if (!queue.isEmpty()){
-						queue.add(null);
-					}
-				}
+				} 
+				level.add(tempList);
+				tempList = new ArrayList<Integer>();
 			}
 		}
 		return level;

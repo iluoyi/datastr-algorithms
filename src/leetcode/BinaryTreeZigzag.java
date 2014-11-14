@@ -10,8 +10,9 @@ public class BinaryTreeZigzag {
         if (root != null) {
         	Stack<TreeNode> crtStack = new Stack<TreeNode>();
         	Stack<TreeNode> nextStack = new Stack<TreeNode>();
+        	
         	Stack<TreeNode> tempStack = null;
-        	ArrayList<Integer> result = new ArrayList<Integer>();
+        	ArrayList<Integer> result;
         	
         	crtStack.push(root);
         	TreeNode crtNode = null;
@@ -40,6 +41,7 @@ public class BinaryTreeZigzag {
 	        		}
 	        	}
 	        	zigzag.add(result);
+	        	
 	        	tempStack = crtStack;
 	        	crtStack = nextStack;
 	        	nextStack = tempStack;
