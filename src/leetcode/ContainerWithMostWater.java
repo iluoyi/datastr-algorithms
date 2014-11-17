@@ -1,6 +1,13 @@
 package leetcode;
 
 public class ContainerWithMostWater {
+	
+	/**
+	 * O(n) / O(1)
+	 * 
+	 * @param height
+	 * @return
+	 */
     public int maxArea(int[] height) {
     	if (height != null && height.length > 1) {
         int left = 0;

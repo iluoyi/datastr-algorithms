@@ -5,8 +5,6 @@ import java.util.Stack;
 /**
  * O(n)
  * 
- * 这个方法太牛逼了。。。。
- * 
  * @author yiluo
  *
  */
