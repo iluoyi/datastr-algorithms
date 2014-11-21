@@ -1,4 +1,4 @@
-package practice;
+package models;
 
 public class TermVector{
 	

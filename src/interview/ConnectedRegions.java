@@ -1,4 +1,4 @@
-package practice;
+package interview;
 
 /**
  * Interviewed by Renren.com

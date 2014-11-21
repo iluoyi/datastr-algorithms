@@ -1,4 +1,4 @@
-package practice;
+package interview;
 
 public class RemoveVowels {
 	public static String removeVowels(String testStr) {
