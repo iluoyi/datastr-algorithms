@@ -17,7 +17,7 @@ public class InsertInterval {
 		
 		boolean inserted = false;
 		for (Interval crt : intervals) {
-			if (!inserted) { // newInterval has been inserted properly
+			if (!inserted) { 
 				if (newInterval.end < crt.start) { // 1. before
 					rst.add(newInterval);
 					rst.add(crt);
@@ -29,7 +29,7 @@ public class InsertInterval {
 					rst.add(crt);
 				}
 			} else {
-				rst.add(crt);
+				rst.add(crt); // newInterval has been inserted properly
 			}
 		}
 		

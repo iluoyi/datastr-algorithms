@@ -9,6 +9,16 @@ import java.util.List;
  *
  */
 public class Triangle {
+	/*
+	 * DP
+	 * 
+	 * rolling array O(n) space
+	 * 
+	 * From bottom to up
+	 * dp[j] = min(dp[j], dp[j+1]) + t[i][j];
+	 *
+	 * target: dp[0]
+	 */
     public int minimumTotal(List<List<Integer>> triangle) {
         if (triangle == null || triangle.size() == 0) return 0;
         

@@ -1,27 +1,44 @@
 package leetcode;
 
+/*
+ * Recursion
+ * 
+ * singlePath + maxPath
+ * 
+ */
 public class BinaryTreeMaxPathSum {
-	// store max value
-	private int max;
-
-	public int maxPathSum(TreeNode root) {
-		max = (root == null) ? 0 : root.val;
-		findMax(root);
-		return max;
+	private class ResultType {
+		int singlePath, maxPath;
+		ResultType(int singlePath, int maxPath) {
+			this.singlePath = singlePath; // the MAX single path which includes root, for the use of upper levels
+			this.maxPath = maxPath; // the MAX path under this root (may or may not pass the root), cache results in lower levels
+		}
 	}
 
-	private int findMax(TreeNode node) {
-		if (node == null)
-			return 0;
+	private ResultType helper(TreeNode root) {
+		if (root == null) {
+			return new ResultType(0, Integer.MIN_VALUE);
+		}
 
-		// recursively get sum of left and right path
-		int left = Math.max(findMax(node.left), 0); // if left > 0, it contributes to the a larger sum
-		int right = Math.max(findMax(node.right), 0); // if right > 0, it contributes to the a larger sum
+		ResultType left = helper(root.left);
+		ResultType right = helper(root.right);
 
-		// update maximum here
-		max = Math.max(node.val + left + right, max);
+		int singlePath = Math.max(left.singlePath, right.singlePath) + root.val;
+		// if singlePath < 0, it only means root.val < 0 because helper() returns only >=0 values
+		singlePath = Math.max(singlePath, 0); // don't propagate negative values to upper levels
 
-		// return sum of largest path of current node
-		return node.val + Math.max(left, right); // can only select one path (back to top root)
+		int maxPath = Math.max(left.maxPath, right.maxPath);
+		// the MAX under this root is one of:
+		// 1. the MAX under this.left;
+		// 2. the MAX under this.right;
+		// 3. left.single + root.val + right.single.
+		maxPath = Math.max(maxPath, left.singlePath + right.singlePath + root.val);
+
+		return new ResultType(singlePath, maxPath);
+	}
+
+	public int maxPathSum(TreeNode root) {
+		ResultType result = helper(root);
+		return result.maxPath;
 	}
 }

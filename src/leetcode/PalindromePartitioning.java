@@ -3,6 +3,12 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * O(2^n)
+ * 
+ * @author Yi
+ *
+ */
 public class PalindromePartitioning {
 	public List<List<String>> partition(String s) {
 		List<List<String>> list = new ArrayList<List<String>>();

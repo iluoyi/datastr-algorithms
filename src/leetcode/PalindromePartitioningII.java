@@ -23,6 +23,7 @@ public class PalindromePartitioningII {
         	cut[i] = i; // cut number = the number of characters (will -1 finally)
         }
         
+        // O(n^2)
         for (int i = 0; i < len ; i ++) {
         	for (int j = 0; j <= i; j ++) {
         		if (s.charAt(i) == s.charAt(j) && 
