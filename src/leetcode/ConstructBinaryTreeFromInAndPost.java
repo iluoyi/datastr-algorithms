@@ -18,11 +18,11 @@ public class ConstructBinaryTreeFromInAndPost {
     	if (poststart > postend || instart > inend) { //terminate conditions
     		return null;
     	} else {
-    		TreeNode root = new TreeNode(postorder[postend]); // first element as the root
+    		TreeNode root = new TreeNode(postorder[postend]); // last element as the root
     		int index = findRootIndex(inorder, postorder[postend]);
     		int span = inend - index; // the length of the right tree
-    		root.right = myBuildTree(postorder, postend - span, postend - 1, inorder, inend - span + 1, inend);
-    		root.left = myBuildTree(postorder, poststart, postend - span - 1, inorder, instart, inend - span - 1);
+    		root.right = myBuildTree(postorder, postend - span, postend - 1, inorder, index + 1, inend);
+    		root.left = myBuildTree(postorder, poststart, postend - span - 1, inorder, instart, index - 1);
     		return root;
     	}
     }

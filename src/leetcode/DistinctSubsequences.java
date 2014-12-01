@@ -5,6 +5,8 @@ package leetcode;
  * 
  * O(m*n) / O(n^2) -> O(n) by only one Array
  * 
+ * f[i][j] = f[i-1][j] + (f[i-1][j-1] if char[i-1]=char[j-1])
+ * 
  * @author yiluo
  *
  */

@@ -25,7 +25,6 @@ public class ConvertSortedListToBST {
     }
     
     // bottom-up method
-//    private TreeNode sortedListToBST(ListNode crt, int left, int right) { // this is a deep copy in Java
     private TreeNode sortedListToBST(int left, int right) {
     	if (left > right) return null;
     	

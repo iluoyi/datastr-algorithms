@@ -21,8 +21,8 @@ public class ConstructBinaryTreeFromPreAndIn {
     		TreeNode root = new TreeNode(preorder[prestart]); // first element as the root
     		int index = findRootIndex(inorder, preorder[prestart]);
     		int span = index - instart; // the length of the left tree
-    		root.left = myBuildTree(preorder, prestart + 1, prestart + span, inorder, instart, instart + span - 1);
-    		root.right = myBuildTree(preorder, prestart + span + 1, preend, inorder, instart + span + 1, inend);
+    		root.left = myBuildTree(preorder, prestart + 1, prestart + span, inorder, instart, index - 1);
+    		root.right = myBuildTree(preorder, prestart + span + 1, preend, inorder, index + 1, inend);
     		return root;
     	}
     }

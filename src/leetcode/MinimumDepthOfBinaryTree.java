@@ -9,8 +9,8 @@ public class MinimumDepthOfBinaryTree {
     }
     
     private int getMinDepth(TreeNode root) {
-    	if (root == null) {
-        	return Integer.MAX_VALUE;
+    	if (root == null) { // no depth value for a missing child
+        	return Integer.MAX_VALUE; 
         } else {
         	if (root.left == null && root.right == null) {// if it is a leaf node
         		return 1;

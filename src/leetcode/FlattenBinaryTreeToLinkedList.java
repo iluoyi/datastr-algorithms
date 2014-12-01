@@ -2,10 +2,10 @@ package leetcode;
 
 
 public class FlattenBinaryTreeToLinkedList {
-	// By nine_chapter
-	private TreeNode lastNode = null;
 
-    public void flatten(TreeNode root) { // recursive method
+	// recursive
+	private TreeNode lastNode = null; // java use global varible to simulate pointers
+    public void flatten(TreeNode root) { // recursive method - preorder
         if (root == null) {
             return;
         }
@@ -20,39 +20,21 @@ public class FlattenBinaryTreeToLinkedList {
         flatten(root.left);
         flatten(right);
     }
+    
+    //  simple and elegent - non-recursive 
+	public void flatten1(TreeNode root) {
+		while (root != null) {
+			if (root.left != null) {
+				TreeNode pre = root.left;
+				while (pre.right != null) {
+					pre = pre.right;
+				}
+				pre.right = root.right;
+				root.right = root.left;
+				root.left = null;
+			}
+			root = root.right;
+		}
+	}
 	
-	// By Yi, stupid method
-//	public void flatten(TreeNode root) {
-//		ArrayList<TreeNode> preOrder = preorderTraversal(root);
-//		if (preOrder != null && !preOrder.isEmpty()) {
-//			TreeNode prev = preOrder.get(0);
-//			for (int i = 1; i < preOrder.size(); i ++) {
-//				prev.right = preOrder.get(i);
-//				prev.left = null;
-//				prev = preOrder.get(i);
-//			}
-//		}
-//	}
-//	
-//	private ArrayList<TreeNode> preorderTraversal(TreeNode root) {
-//        if (root == null) {
-//            return null;
-//        } else {
-//        	ArrayList<TreeNode> result = new ArrayList<TreeNode>();
-//            Stack<TreeNode> stack = new Stack<TreeNode>();
-//            TreeNode crt = root;
-//            
-//            while (crt != null || !stack.isEmpty()) {
-//            	result.add(crt);
-//            	stack.push(crt);
-//   
-//            	crt = crt.left;
-//            	while (crt == null && !stack.isEmpty()) {
-//            		crt = stack.pop();
-//            		crt = crt.right;
-//            	}
-//            }
-//            return result;
-//        }
-//	}
 }
