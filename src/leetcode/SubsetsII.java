@@ -29,7 +29,7 @@ public class SubsetsII {
 		result.add(new ArrayList<Integer>(list));
 
 		for (int i = pos; i < num.length; i++) {
-			if (i != pos && num[i] == num[i - 1]) continue;
+			if (i != pos && num[i] == num[i - 1]) continue; // jump duplicates
 			list.add(num[i]);
 			subsetsHelper(result, list, num, i + 1);
 			list.remove(list.size() - 1);

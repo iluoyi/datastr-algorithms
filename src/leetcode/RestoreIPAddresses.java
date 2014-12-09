@@ -27,7 +27,7 @@ public class RestoreIPAddresses {
 		
 		// detect a valid result
 		if (s.length() == start && step == 4) {
-			rst.add(ip.substring(0, ip.length() - 1));
+			rst.add(ip.substring(0, ip.length() - 1)); // remove the last '.'
 			return;
 		}
 		
@@ -43,7 +43,7 @@ public class RestoreIPAddresses {
 	
 	public static void main(String args[]) {
 		RestoreIPAddresses solution = new RestoreIPAddresses();
-		System.out.println(solution.restoreIpAddresses("25525511135"));
+		System.out.println(solution.restoreIpAddresses("127001"));
 	}
 }
 

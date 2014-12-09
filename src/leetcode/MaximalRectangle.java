@@ -23,13 +23,6 @@ public class MaximalRectangle {
 //	        return maxArea;
 //	     }
 //		
-//		/**
-//	     * 以给出的坐标作为左上角，计算其中的最大矩形面积
-//	     * @param matrix
-//	     * @param row 给出坐标的行
-//	     * @param col 给出坐标的列
-//	     * @return 返回最大矩形的面积
-//	     */
 //	    private int maxRectangle(char[][] matrix, int row, int col) {
 //	        int minWidth = Integer.MAX_VALUE;
 //	        int maxArea = 0;
@@ -39,7 +32,7 @@ public class MaximalRectangle {
 //	                    && matrix[i][col + width] == '1') {
 //	                width++;
 //	            }
-//	            if (width < minWidth) {// 如果当前宽度小于了以前的最小宽度，更新它，为下面的矩形计算做准备
+//	            if (width < minWidth) {
 //	                minWidth = width;
 //	            }
 //	            int area = minWidth * (i - row + 1);

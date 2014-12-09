@@ -19,7 +19,7 @@ public class Combinations {
 		if (comb.size() == k) {
 			combinations.add(new ArrayList<Integer>(comb)); // deep copy
 		} else {
-			for (int i = crt; i <= n; i++) {
+			for (int i = crt; i <= n + i - k; i++) {
 				comb.add(i);
 				getCombinations(combinations, comb, n, k, i + 1);
 				comb.remove(comb.size() - 1); // backtracing
