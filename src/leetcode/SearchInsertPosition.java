@@ -1,5 +1,13 @@
 package leetcode;
 
+/**
+ * No duplicate
+ * 
+ * O(logn)
+ * 
+ * @author yiluo
+ *
+ */
 public class SearchInsertPosition {
 	public int searchInsert(int[] A, int target) {
         int head = 0;
@@ -22,7 +30,7 @@ public class SearchInsertPosition {
 	
 	public static void main(String args[]) {
 		SearchInsertPosition solution = new SearchInsertPosition();
-		int[] A = {1};
-		System.out.println(solution.searchInsert(A, 2));
+		int[] A = {1, 3, 5, 6};
+		System.out.println(solution.searchInsert(A, 7));
 	}
 }

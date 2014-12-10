@@ -34,7 +34,7 @@ public class CombinationSum {
     			if (candidates[i] > target) continue;
     			
     			tempList.add(candidates[i]);
-    			dfs(results, tempList, target - candidates[i], candidates, i);
+    			dfs(results, tempList, target - candidates[i], candidates, i); // i (not i+1): may be duplicate
     			tempList.remove(tempList.size() - 1);
     		}
     	}

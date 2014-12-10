@@ -37,6 +37,10 @@ public class UniquePathsII {
 		}
 	}
 	
+	// can consider a rolling array:
+	// dp[j] = obstacleGrid[i][j] == 1 ? 0 : (j == 0 ? 0 : dp[j - 1] + dp[j]);
+	// target: dp[n - 1]
+	
 	public static void main(String args[]) {
 		int[][] map = new int[][]{{0, 1}};
 		UniquePathsII solution = new UniquePathsII();

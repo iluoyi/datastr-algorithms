@@ -63,8 +63,8 @@ public class GenerateParenthesis {
 		String[] test = new String[]{"(((())))","((()()))","((())())","((()))()","(()(()))","(()()())","(()())()","(())(())","(())()()","()((()))","()(()())","()(())()","()()(())","()()()()"};
 		ArrayList<String> comp = new ArrayList<String>(Arrays.asList(test));
 		
-		for (String paren : comp) {
-			if (!orig.contains(paren)) {
+		for (String paren : orig) {
+			if (!comp.contains(paren)) {
 				System.out.println(paren);
 			}
 		}

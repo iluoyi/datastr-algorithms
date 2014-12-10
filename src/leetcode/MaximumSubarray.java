@@ -32,7 +32,7 @@ public class MaximumSubarray {
 	
 	public static void main(String args[]) {
 		MaximumSubarray solution = new MaximumSubarray();
-		int[] A = new int[]{-2, -1};
+		int[] A = new int[]{-2,1,-3,4,-1,2,1,-5,4};
 		System.out.println(solution.maxSubArray(A));
 	}
 }

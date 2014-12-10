@@ -23,9 +23,9 @@ public class LongestValidParentheses {
 				} else { // if matched
 					stack.pop(); // pop out the top element
 					if (stack.isEmpty()) {
-						maxLen = Math.max(maxLen, i - index);
+						maxLen = Math.max(maxLen, i - index); // a good match
 					} else {
-						maxLen = Math.max(maxLen, i - stack.peek());
+						maxLen = Math.max(maxLen, i - stack.peek()); // remaining many '('s
 					}
 				}
 			}

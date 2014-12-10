@@ -38,6 +38,7 @@ public class CombinationSumII {
     		int prev = -1;
     		for (int i = start; i < candidates.length; i ++) {
     			if (candidates[i] > target || candidates[i] == prev) continue;
+    			// a different way to jump duplicates is in PermutationsII
     			tempList.add(candidates[i]);
     			dfs(results, tempList, target - candidates[i], candidates, i + 1);
     			tempList.remove(tempList.size() - 1);

@@ -3,6 +3,9 @@ package leetcode;
 /**
  * Check out the discussion about the proof at:
  * https://oj.leetcode.com/discuss/6762/how-to-proof-the-count-is-always-less-than-10
+ * 
+ * 模拟
+ * 
  * @author yiluo
  *
  */
@@ -12,13 +15,13 @@ public class CountAndSay {
         
         String result = "1";
         while (n > 1) {
-        	result = getNth(result);
+        	result = getNext(result);
         	n --;
         }
         return result.toString();
     }
     
-    private String getNth(String s) {
+    private String getNext(String s) {
     	StringBuilder result = new StringBuilder();
     	int index = 0;
     	int count = 0;

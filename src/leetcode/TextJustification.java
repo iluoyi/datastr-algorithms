@@ -13,10 +13,13 @@ public class TextJustification {
         int curLen = 0;
         int lastI = 0;
         for (int i = 0; i <= wordsCount; i++) {
-            if (i == wordsCount || curLen + words[i].length() + i - lastI > L) {
+            if (i == wordsCount || curLen + words[i].length() + i - lastI > L) { // cannot hold the next word
                 StringBuffer buf = new StringBuffer();
                 int spaceCount = L - curLen;
                 int spaceSlots = i - lastI - 1;
+                // it's a clever trick here:
+                // case 1: if there is no extra space
+                // case 2: if the word is the last one
                 if (spaceSlots == 0 || i == wordsCount) {
                     for(int j = lastI; j < i; j++){
                         buf.append(words[j]);
@@ -24,7 +27,9 @@ public class TextJustification {
                             appendSpace(buf, 1);
                     }
                     appendSpace(buf, L - buf.length());
-                } else {
+                } 
+                // case 3: if there are extra spaces
+                else {
                     int spaceEach = spaceCount / spaceSlots;
                     int spaceExtra = spaceCount % spaceSlots;
                     for (int j = lastI; j < i; j++) {

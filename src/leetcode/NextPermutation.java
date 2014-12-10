@@ -2,6 +2,16 @@ package leetcode;
 
 
 public class NextPermutation {
+	/**
+	 * O(n)
+	 * 
+	 * 1. from right to left, find the first element which violates the increasing trend, as a partition element;
+	 * 2. from right to left, find the first element which is greater than the partition element, as a changing element;
+	 * 3. swap the partition and changing elements;
+	 * 4. reverse elements at the right side of the partition element.
+	 * 
+	 * @param num
+	 */
 	public void nextPermutation(int[] num) {
 		if (num == null) {
 			return;
@@ -9,7 +19,7 @@ public class NextPermutation {
 
 		int len = num.length;
 		for (int i = len - 2; i >= 0; i--) {
-			if (num[i + 1] > num[i]) {
+			if (num[i + 1] > num[i]) { 
 				int j = 0;
 				for (j = len - 1; j >= i; j--) {
 					if (num[j] > num[i])
@@ -42,7 +52,7 @@ public class NextPermutation {
 	
 	public static void main(String args[]) {
 		NextPermutation solution = new NextPermutation();
-		int[] per = new int[]{1, 2, 3};
+		int[] per = new int[]{6, 8, 7, 4, 3, 2};
 		solution.nextPermutation(per);
 		for (int i = 0; i < per.length; i ++)
 			System.out.print(per[i] + ", ");

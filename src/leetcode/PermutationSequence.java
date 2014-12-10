@@ -12,7 +12,7 @@ package leetcode;
  */
 public class PermutationSequence {
 	public String getPermutation(int n, int k) {
-		int factor = 1, selected;
+		int factor = 1, selected; // the index of selected digit
 		int[] num = new int[n];
 		
 		for (int i = 0 ; i < n; i ++) {
@@ -27,7 +27,7 @@ public class PermutationSequence {
 			factor = factor / (n - i); // for (n - 1)
 			selected = k / factor;
 			sb.append(num[selected]);
-			for (int j = selected; j < n - i - 1; j ++) { // can be replaced with a "used[]" array
+			for (int j = selected; j < n - i - 1; j ++) { // can be replaced with an ArrayList to erase elements
 				num[j] = num[j + 1]; // erase selected!
 			}
 			k = k % factor;
@@ -38,6 +38,6 @@ public class PermutationSequence {
 	
 	public static void main(String args[]) {
 		PermutationSequence solution = new PermutationSequence();
-		System.out.println(solution.getPermutation(1, 1));
+		System.out.println(solution.getPermutation(3, 3));
 	}
 }

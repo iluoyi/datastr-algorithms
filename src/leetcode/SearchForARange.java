@@ -39,6 +39,6 @@ public class SearchForARange {
     	int[] A = new int[1];
     	A[0] = 1;
     	int[] range = solution.searchRange(A, 1);
-    	System.out.println(range[0] + ", " + range[1]);
+    	System.out.println("[" + range[0] + ", " + range[1] + "]");
     }
 }

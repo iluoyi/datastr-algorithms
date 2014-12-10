@@ -23,7 +23,7 @@ public class Anagrams {
 		HashMap<String, ArrayList<String>> map = new HashMap<String, ArrayList<String>>();
 		for (String str : strs) {
 			char[] charArray = str.toCharArray();
-			Arrays.sort(charArray);
+			Arrays.sort(charArray); // O(klogk)
 			String newStr = new String(charArray);
 			if (map.containsKey(newStr)) {
 				map.get(newStr).add(str);

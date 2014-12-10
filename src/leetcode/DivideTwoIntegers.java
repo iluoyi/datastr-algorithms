@@ -20,7 +20,7 @@ public class DivideTwoIntegers {
 				shift++;
 			}
 			ans += 1 << (shift - 1);
-			a = a - (b << (shift - 1));
+			a = a - (b << (shift - 1)); // dividend - k * divisor = 0 -> k is the result
 		}
 		return (dividend > 0 ^ divisor > 0) ? -ans : ans; // XOR
 	}

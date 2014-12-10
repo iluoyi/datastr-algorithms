@@ -1,6 +1,38 @@
 package leetcode;
 
+
 public class SpiralMatrixII {
+	/**
+	 * Take this idea
+	 * @param matrix
+	 * @return
+	 */
+	public int[][] generateMatrix1(int n) {
+			int[][] matrix = new int[n][n];
+		
+		int beginX = 0, endX = matrix[0].length - 1;
+		int beginY = 0, endY = matrix.length - 1;
+		
+		int num = 1; 
+		
+		while (true) {
+			// left to right
+			for (int j = beginX; j <= endX; j ++) matrix[beginY][j] = num ++;
+			if (++beginY > endY) break;
+			// up to bottom
+			for (int i = beginY; i <= endY; i ++) matrix[i][endX] = num ++;
+			if (beginX > --endX) break;
+			// right to left
+			for (int j = endX; j >= beginX; j --) matrix[endY][j] = num ++;
+			if (beginY > --endY) break;
+			// bottom to up
+			for (int i = endY; i >= beginY; i --) matrix[i][beginX] = num ++;
+			if (++beginX > endX) break;
+		}
+		
+		return matrix;
+	}
+	
 	public int[][] generateMatrix(int n) {
 		if (n > 0) {
 			int[][] result = new int[n][n];
@@ -47,7 +79,7 @@ public class SpiralMatrixII {
 	
 	public static void main(String args[]) {
 		SpiralMatrixII solution = new SpiralMatrixII();
-		int[][] result = solution.generateMatrix(0);
+		int[][] result = solution.generateMatrix1(3);
 		for (int i = 0; i < result.length; i ++) {
 			for (int j = 0; j < result[0].length; j ++) {
 				System.out.print(result[i][j] + ", ");

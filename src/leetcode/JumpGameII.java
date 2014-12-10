@@ -39,7 +39,7 @@ public class JumpGameII {
 	// another greedy algorithm, O(n)
 	public int jump(int[] A) {
 		int result = 0;
-		int crt = 0; // crt reachable range
+		int crt = 0; // crt reachable range - note: it's a range, not an accurate index
 		int next = 0; // reachable range by one more step
 		
 		for (int i = 0; i < A.length; i ++) {

@@ -60,7 +60,7 @@ public class ReverseNodesInKGroup {
 			crt.next = new ListNode(testInput[i]);
 			crt = crt.next;
 		}
-		int k = 9;
+		int k = 2;
 		
 		ReverseNodesInKGroup solution = new ReverseNodesInKGroup();
 		head = solution.reverseKGroup(head, k);
