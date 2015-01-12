@@ -1,11 +1,10 @@
 package leetcode;
 
 /**
- * 最长连续回文串，经典题目
  * 
  * 1. DP: O(n^2) / O(n^2)
  * 
- * 2. Manacher’s Algorithm：O(n) / O(n) - 碉堡了。。。
+ * 2. Manacher's Algorithm: O(n) / O(n) 
  * 
  * @author yiluo
  *
@@ -46,7 +45,7 @@ public class LongestPalindromicSubstring {
 	}
 	
 	/**
-	 * Manacher’s Algorithm：O(n) / O(n)
+	 * Manacher's Algorithm: O(n) / O(n)
 	 * 
 	 */
 	

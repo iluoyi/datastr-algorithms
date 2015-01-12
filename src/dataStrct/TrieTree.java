@@ -16,6 +16,14 @@ public class TrieTree {
 		}
 		v.leaf = true;
 	}
+	
+	public boolean isPrefix(TrieNode root, String prefix) {
+		return false;
+	}
+	
+	public boolean contains(TrieNode root, String word) {
+		return false;
+	}
 
 	public static void printSorted(TrieNode node, String s) {
 		for (char ch = 0; ch < node.children.length; ch++) {
